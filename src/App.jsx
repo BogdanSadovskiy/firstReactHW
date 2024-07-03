@@ -1,13 +1,13 @@
-
-
-import ToDoList from "./conponents/todolist/ToDoList";
+import AddItemGeneral from "./conponents/addItem/AddItemGeneral"
 import ProductsFill from "./conponents/rozetka/productsFill";
+
 
 function App() {
   return (
     <>
-      <ToDoList />
+      <AddItemGeneral/>
       <ProductsFill />
+      
       
       
     </>

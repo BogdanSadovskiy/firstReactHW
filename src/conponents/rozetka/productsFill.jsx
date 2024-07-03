@@ -11,6 +11,7 @@ class ProductsFill extends Component {
         description: "Набір з мінізасобами Vichy",
         price: "399",
         sold: false,
+        additionalDescription: "ultrices eros in cursus turpis massa tincidunt dui ut ornare",
       },
       {
         image:
@@ -18,6 +19,7 @@ class ProductsFill extends Component {
         description: "Вологий туалетний папір-серветки Kokett",
         price: "59",
         sold: false,
+        additionalDescription: "nunc faucibus a pellentesque sit amet porttitor eget dolor morbi non arcu risus quis varius quam quisque id diam vel",
       },
       {
         image:
@@ -25,6 +27,7 @@ class ProductsFill extends Component {
         description: "Кава розчинна Jacobs Brazil 100% Арабіка 150",
         price: "99",
         sold: true,
+        additionalDescription: "hello",
       },
       {
         image:
@@ -32,6 +35,7 @@ class ProductsFill extends Component {
         description: "УМБ XO Power Bank 20000mAh PR183 Light",
         price: "525",
         sold: false,
+        additionalDescription: "world"
       },
     ];
     return (
@@ -43,6 +47,7 @@ class ProductsFill extends Component {
             description={product.description}
             sold={product.sold}
             price={product.price}
+            additionalDescription={product.additionalDescription}
           />
         ))}
       </div>
