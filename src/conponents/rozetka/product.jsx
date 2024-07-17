@@ -32,14 +32,14 @@ const Product = ({
         <img src={image} alt="" className="product_image" />
       </div>
 
-      <h2 className="product_descr">{description}</h2>
-      {sold && <p className="product_sold">Закінчується</p>}
-      <p className="product_price">{price}$</p>
+      <h2 className={`product_descr-${size}`}>{description}</h2>
+      {sold && <p className={`product_sold-${size}`}>Закінчується</p>}
+      <p className={`product_price-${size}`}>{price}$</p>
 
       {showAdditionalDescription && (
         <div
           className="product_additional_info"
-          style={{ left: position.x, top: position.y + 20 }}
+          style={{ left: 20, top: 150 }}
         >
           <p className="product_additional_descr">{additionalDescription}</p>
         </div>
