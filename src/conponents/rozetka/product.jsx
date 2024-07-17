@@ -1,15 +1,33 @@
 import React, { useState } from "react";
-import "./product.css"; 
+import "./product.css";
 
-const Product = ({ id, image, description, sold, price, additionalDescription }) => {
+const Product = ({
+  id,
+  image,
+  description,
+  sold,
+  price,
+  additionalDescription,
+  size,
+}) => {
   const [showAdditionalDescription, setShowAdditionalDescription] = useState(false);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
 
-  const toggleAdditionalDescription = () => {
-    setShowAdditionalDescription(!showAdditionalDescription);
+  const mouseEnterAdditionalDescription = (e) => {
+    setPosition({ x: e.clientX, y: e.clientY });
+    setShowAdditionalDescription(true);
+  };
+
+  const mouseLeaveAdditionalDescription = () => {
+    setShowAdditionalDescription(false);
   };
 
   return (
-    <div className="product" onMouseEnter={toggleAdditionalDescription} onMouseLeave={toggleAdditionalDescription}>
+    <div
+      className={`product ${size}`}
+      onMouseEnter={mouseEnterAdditionalDescription}
+      onMouseLeave={mouseLeaveAdditionalDescription}
+    >
       <div className="product-image-container">
         <img src={image} alt="" className="product_image" />
       </div>
@@ -19,7 +37,12 @@ const Product = ({ id, image, description, sold, price, additionalDescription })
       <p className="product_price">{price}$</p>
 
       {showAdditionalDescription && (
-        <p className="product_additional_descr">{additionalDescription}</p>
+        <div
+          className="product_additional_info"
+          style={{ left: position.x, top: position.y + 20 }}
+        >
+          <p className="product_additional_descr">{additionalDescription}</p>
+        </div>
       )}
     </div>
   );

@@ -6,18 +6,18 @@ const Form = ({ onClose, onAddProduct }) => {
   const [productQuantity, setProductQuantity] = useState("");
   const [productPrice, setProductPrice] = useState("");
   const [productImage, setProductImage] = useState("");
+  const [additionalInformation, setadditionalInformation] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
- 
     const newProduct = {
-      id: Date.now(), 
+      id: Date.now(),
       image: productImage,
       description: productName,
-      price: parseFloat(productPrice), 
-      sold: false, 
-      additionalDescription: "", 
+      price: parseFloat(productPrice),
+      sold: false,
+      additionalDescription: additionalInformation,
     };
 
     onAddProduct(newProduct);
@@ -26,6 +26,7 @@ const Form = ({ onClose, onAddProduct }) => {
     setProductQuantity("");
     setProductPrice("");
     setProductImage("");
+    setadditionalInformation("");
 
     onClose();
   };
@@ -54,7 +55,9 @@ const Form = ({ onClose, onAddProduct }) => {
       setProductQuantity("0");
     } else setProductQuantity(event.target.value);
   };
-
+  const handleAdditionalInformation = (event) => {
+    setadditionalInformation(event.target.value);
+  };
   const handleClose = () => {
     onClose();
   };
@@ -66,7 +69,7 @@ const Form = ({ onClose, onAddProduct }) => {
       </button>
       <form onSubmit={handleSubmit} className="form-container">
         <label className="form-label">
-          Product Name:
+          Назва продукту:
           <input
             type="text"
             value={productName}
@@ -77,7 +80,7 @@ const Form = ({ onClose, onAddProduct }) => {
         </label>
         <br />
         <label className="form-label">
-          Product Quantity:
+          Кількість:
           <input
             type="number"
             value={productQuantity}
@@ -88,7 +91,7 @@ const Form = ({ onClose, onAddProduct }) => {
         </label>
         <br />
         <label className="form-label">
-          Product Price:
+          Ціна:
           <input
             type="text"
             value={productPrice}
@@ -99,7 +102,7 @@ const Form = ({ onClose, onAddProduct }) => {
         </label>
         <br />
         <label className="form-label">
-          Product Image:
+          Зображення:
           <input
             type="text"
             value={productImage}
@@ -107,6 +110,16 @@ const Form = ({ onClose, onAddProduct }) => {
             accept="image/*"
             className="form-input"
             required
+          />
+        </label>
+        <br />
+        <label className="form-label">
+          Додаткова інформація(не обовязково):
+          <input
+            type="text"
+            value={additionalInformation}
+            onChange={handleAdditionalInformation}
+            className="form-input"
           />
         </label>
         <br />

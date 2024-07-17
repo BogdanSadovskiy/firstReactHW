@@ -5,6 +5,7 @@ import Form from "./addItem/Form";
 import initialProducts from "./rozetka/productsInitialData";
 import "./General.css";
 
+
 const General = () => {
   const [products, setProducts] = useState(initialProducts);
   const [showForm, setShowForm] = useState(false);
@@ -59,8 +60,8 @@ const General = () => {
         <Form onClose={toggleForm} onAddProduct={handleAddProduct} />
       )}
 
-      <div className="products-tools">
-        <div className="filters">
+      
+        <div className="products-tools">
           <label htmlFor="sortSelect"></label>
           <select id="sortSelect" value={sortType} onChange={handleSortChange}>
             <option value="name">По Назві</option>
@@ -83,8 +84,8 @@ const General = () => {
           </div>
         </div>
 
-        <div className="products-grid">
-          <div className={`products ${tileSize}`}>
+        
+          <div className="products">
             {sortedProductsList.map((product) => (
               <Product
                 key={product.id}
@@ -93,11 +94,13 @@ const General = () => {
                 sold={product.sold}
                 price={product.price}
                 additionalDescription={product.additionalDescription}
+                size={tileSize} 
               />
+            
             ))}
           </div>
-        </div>
-      </div>
+
+     
     </>
   );
 };

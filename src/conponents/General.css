@@ -1,10 +1,11 @@
 
 .products-tools {
  display: flex;
- justify-content:right;
+ justify-content:center;
   margin-right: 40px;
   padding: 20px;
 }
+
 
 
 .filters {
@@ -49,19 +50,13 @@
   border: 2px solid #4caf50;
   border-radius: 4px;
 }
-
-.products.large {
-  width: 150px;
-  height: 300px;
-}
-
-.products.small {
-  width: 120px;
-  height: 240px;
-}
-
-.products-grid {
+.products{
+    
     display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
+    flex-wrap: wrap;
+   justify-content: center;
+   width: 70%; /* Встановлюємо ширину контейнера в 80% від екрану */
+   margin: 0 auto;
+}
+
+
