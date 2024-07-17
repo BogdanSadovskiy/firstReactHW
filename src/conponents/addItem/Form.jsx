@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Form.css";
-const Form = ({ onClose }) => {
+
+const Form = ({ onClose, onAddProduct }) => {
   const [productName, setProductName] = useState("");
   const [productQuantity, setProductQuantity] = useState("");
   const [productPrice, setProductPrice] = useState("");
@@ -8,21 +9,32 @@ const Form = ({ onClose }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+ 
+    const newProduct = {
+      id: Date.now(), 
+      image: productImage,
+      description: productName,
+      price: parseFloat(productPrice), 
+      sold: false, 
+      additionalDescription: "", 
+    };
+
+    onAddProduct(newProduct);
+
+    setProductName("");
+    setProductQuantity("");
+    setProductPrice("");
+    setProductImage("");
+
     onClose();
   };
 
-  console.log(productName);
-  console.log(productQuantity);
-  console.log(productImage);
-
   const handlePriceChange = (event) => {
     const value = event.target.value;
-    console.log(productPrice);
     if (/^\d*\.?\d*$/.test(value)) {
       setProductPrice(value);
-      return;
     }
-    setProductPrice("");
   };
 
   const handleImageChange = (event) => {
@@ -43,9 +55,9 @@ const Form = ({ onClose }) => {
     } else setProductQuantity(event.target.value);
   };
 
-  const handleClose = ()=>{
+  const handleClose = () => {
     onClose();
-  }
+  };
 
   return (
     <div className="formContainer">
@@ -90,6 +102,7 @@ const Form = ({ onClose }) => {
           Product Image:
           <input
             type="text"
+            value={productImage}
             onChange={handleImageChange}
             accept="image/*"
             className="form-input"
@@ -105,13 +118,12 @@ const Form = ({ onClose }) => {
           />
         )}
         <br />
-        <div class="buttonGiv">
+        <div className="buttonGiv">
           <button type="submit" className="form-submit-button">
             Submit
           </button>
         </div>
       </form>
-      
     </div>
   );
 };

@@ -1,12 +1,10 @@
-import AddItemGeneral from "./conponents/addItem/AddItemGeneral"
-import ProductsFill from "./conponents/rozetka/productsFill";
+import General from "./conponents/General.jsx";
 
 
 function App() {
   return (
     <>
-      <AddItemGeneral/>
-      <ProductsFill />
+      <General/>
       
       
       

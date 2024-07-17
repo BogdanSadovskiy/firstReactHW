@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./product.css"; 
 
-const Product = ({ image, description, sold, price, additionalDescription }) => {
+const Product = ({ id, image, description, sold, price, additionalDescription }) => {
   const [showAdditionalDescription, setShowAdditionalDescription] = useState(false);
 
   const toggleAdditionalDescription = () => {
